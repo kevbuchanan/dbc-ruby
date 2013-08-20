@@ -17,8 +17,8 @@ module DBC
     @@token ||= ENV['DBC-API']
   end
 
-  def self.request(path)
-    response = RestClient.get(@@api_url + path, {accept: :json, authorization: 'DBC-API' + ' ' + token})
+  def self.request(path, options = {})
+    response = RestClient.get(@@api_url + path, {accept: :json, authorization: 'DBC-API' + ' ' + token, params: options})
     JSON.parse(response.body, symbolize_names: true)
   end
 end

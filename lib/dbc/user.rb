@@ -7,10 +7,8 @@ module DBC
     end
 
     def self.all(options = {})
-      endpoint = '/users?'
-      endpoint += "page=#{options[:page]}&" if options[:page]
-      endpoint += "per_page=#{options[:per_page]}" if options[:per_page]
-      users = DBC.request(endpoint)
+      endpoint = '/users'
+      users = DBC.request(endpoint, options)
       self.create_users(users)
     end
 

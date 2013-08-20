@@ -7,10 +7,8 @@ module DBC
     end
 
     def self.all(options = {})
-      endpoint = '/cohorts?'
-      endpoint += "page=#{options[:page]}&" if options[:page]
-      endpoint += "per_page=#{options[:per_page]}" if options[:per_page]
-      cohorts = DBC.request(endpoint)
+      endpoint = '/cohorts'
+      cohorts = DBC.request(endpoint, options)
       self.create_cohorts(cohorts)
     end
 
