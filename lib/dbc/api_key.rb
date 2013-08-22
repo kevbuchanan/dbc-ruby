@@ -1,4 +1,4 @@
-require_relative '../dbc'
+ require_relative '../dbc'
 
 module DBC
 	class ApiKey

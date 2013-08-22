@@ -6,6 +6,20 @@ module DBC
 			@attributes = attributes
 		end
 
+		def self.all(options = {})
+			endpoint = '/challenges'
+			challenges = DBC.request(endpoint, options)
+			self.create_challenges(challenges)
+		end
+
+		def self.find(id)
+			endpoint = "/challenges/#{id}"
+			challenge = DBC.request(endpoint)
+			self.create_cohort(challenge)
+		end
+
+		private
+
 		def self.create_challenge(challenge)
 			challenge[:challenge] = DBC::Challenge.new(challenge[:challenge])
 			challenge
@@ -16,18 +30,6 @@ module DBC
 				DBC::Challenge.new(challenge)
 			end
 			challenges
-		end
-
-		def self.find(id)
-			endpoint = "/challenges/#{id}"
-			challenge = DBC.request(endpoint)
-			self.create_cohort(challenge)
-		end
-
-		def self.all(options = {})
-			endpoint = '/challenges'
-			challenges = DBC.request(endpoint, options)
-			self.create_challenges(challenges)
 		end
 	end
 end

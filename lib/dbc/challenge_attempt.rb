@@ -24,7 +24,7 @@ module DBC
 			self.create_challenge_attempt(challenge_attempt)
 		end
 
-		def self.all(options = {})
+		def self.all(user_id, options = {})
 			endpoint = "/users/#{user_id}/challenge_attempts"
 			challenge_attempts = DBC.request(endpoint, options)
 			self.create_challenge_attempts(challenge_attempts)
