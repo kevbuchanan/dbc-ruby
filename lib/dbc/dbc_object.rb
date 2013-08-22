@@ -6,8 +6,8 @@ module DBC
       end
     end
 
-    def self.endpoint(id)
-      nil
+    def self.endpoint(id = '')
+      '/' + id.to_s
     end
 
     def self.all(options = {})

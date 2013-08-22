@@ -6,7 +6,3 @@ require 'bundler/setup'
 require 'rspec'
 require 'webmock/rspec'
 require 'dbc-ruby'
-
-RSpec.configure do |config|
-
-end
