@@ -1,5 +1,7 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/dbc-ruby/version', __FILE__)
+$:.unshift(File.join(File.dirname(__FILE__), 'lib'))
+
+require 'dbc-ruby/version'
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Kevin Buchanan"]
@@ -17,4 +19,6 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'rest-client'
   gem.add_development_dependency 'rspec', '~> 2.7'
+
+  gem.require_paths = ['lib']
 end

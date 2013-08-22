@@ -8,9 +8,3 @@ module Gem
 		end
 	end
 end
-
-
-# it "should auto populate feed after user.add_friend" do
-#     FeedItem.should_receive(:populate_from_friend_to_user).with(@friend1, @user)
-#     @user.add_friend(@friend1)
-#  end

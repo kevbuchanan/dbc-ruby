@@ -1,20 +1,12 @@
- require_relative '../dbc'
-
 module DBC
-	class ApiKey
-		def initialize(attributes)
-			@attributes = attributes
+	class ApiKey < DbcObject
+		def self.endpoint(id)
+			"/api_keys/" + id.to_s
 		end
 
-		def self.create_api_key(api_key)
-      api_key[:api_key] = DBC::ApiKey.new(api_key[:api_key])
-      api_key
-		end
-
-		def self.find(id)
-			endpoint = "/api_keys/#{id}"
-			api_key = DBC.request(endpoint)
-			self.create_api_key(api_key)
-		end
+    def self.find(id)
+      api_response = DBC.request(self.endpoint(id))
+      self.create_dbc_object(api_response)
+    end
 	end
 end

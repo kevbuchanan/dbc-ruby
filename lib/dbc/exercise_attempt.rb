@@ -1,33 +1,21 @@
-require_relative '../dbc'
-
 module DBC
-	class ExerciseAttempt
-		def initialize(attributes)
-			@attributes = attributes
+	class ExerciseAttempt < DbcObject
+		def self.endpoint(user_id, id = '')
+			"/users/#{user_id}/exercise_attempts/" + id
 		end
 
-		def self.create_exercise_attempt(exercise_attempt)
-      exercise_attempt[:exercise_attempt] = DBC::ExerciseAttempt.new(exercise_attempt[:exercise_attempt])
-      exercise_attempt
-		end
-
-		def self.create_exercise_attempts(exercise_attempts)
-			exercise_attempts[:exercise_attempts].map! do |exercise_attempt|
-				DBC::ExerciseAttempt.new(exercise_attempt)
-			end
-			exercise_attempts
-		end
-
-		def self.find(id, user_id)
-			endpoint = "/users/#{user_id}/exercise_attempts/#{id}"
-			exercise_attempt = DBC.request(endpoint)
-			self.create_exercise_attempt(exercise_attempt)
+		def self.find(user_id, id)
+			api_response = DBC.request(endpoint(user_id, id))
+			self.create_dbc_object(api_response)
 		end
 
 		def self.all(user_id, options = {})
-			endpoint = "/users/#{user_id}/exercise_attempts"
-			exercise_attempts = DBC.request(endpoint, options)
-			self.create_exercise_attempts(exercise_attempts)
+			api_response = DBC.request(endpoint(user_id), options)
+			self.create_dbc_objects(api_response)
+		end
+
+		def exercise
+			Exercise.find(@exercise_id)
 		end
 	end
 end

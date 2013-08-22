@@ -1,4 +1,3 @@
-require_relative '../lib/dbc.rb'
 require 'database_cleaner'
 
 RSpec.configure do |config|

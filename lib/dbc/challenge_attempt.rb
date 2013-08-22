@@ -1,33 +1,21 @@
-require_relative '../dbc'
-
 module DBC
-	class ChallengeAttempt
-		def initialize(attributes)
-			@attributes = attributes
-		end
+	class ChallengeAttempt < DbcObject
+    def self.endpoint(user_id, id = '')
+      "/users/#{user_id}/challenge_attempts/" + id
+    end
 
-		def self.create_challenge_attempt(challenge_attempt)
-      challenge_attempt[:challenge_attempt] = DBC::ChallengeAttempt.new(challenge_attempt[:challenge_attempt])
-      challenge_attempt
-		end
+    def self.find(user_id, id)
+      api_response = DBC.request(endpoint(user_id, id))
+      self.create_dbc_object(api_response)
+    end
 
-		def self.create_challenge_attempts(challenge_attempts)
-			challenge_attempts[:challenge_attempts].map! do |challenge_attempt|
-				DBC::ChallengeAttempt.new(challenge_attempt)
-			end
-			challenge_attempts
-		end
+    def self.all(user_id, options = {})
+      api_response = DBC.request(endpoint(user_id), options)
+      self.create_dbc_objects(api_response)
+    end
 
-		def self.find(id, user_id)
-			endpoint = "/users/#{user_id}/challenge_attempts/#{id}"
-			challenge_attempt = DBC.request(endpoint)
-			self.create_challenge_attempt(challenge_attempt)
-		end
-
-		def self.all(user_id, options = {})
-			endpoint = "/users/#{user_id}/challenge_attempts"
-			challenge_attempts = DBC.request(endpoint, options)
-			self.create_challenge_attempts(challenge_attempts)
-		end
+    def challenge
+      Challenge.find(@challenge_id)
+    end
 	end
 end
