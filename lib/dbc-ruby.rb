@@ -31,6 +31,10 @@ module DBC
     @shared_token ||= ENV['DBC_SHARED']
   end
 
+  def self.endpoint
+    @api_url
+  end
+
   def self.request(path, options = {})
     raise ArgumentError.new "You must set ENV['DBC_API'] to your api token" unless self.token
     response = RestClient.get(@api_url + path, {accept: :json, authorization: 'DBC-API' + ' ' + @token, params: options})
