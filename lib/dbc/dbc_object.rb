@@ -3,6 +3,7 @@ module DBC
     def initialize(attributes)
       attributes.each do |key, value|
         instance_variable_set("@#{key}", value)
+        self.class.send(:define_method, key){ value }
       end
     end
 
@@ -23,14 +24,13 @@ module DBC
     private
 
     def self.create_dbc_objects(api_response)
-      api_response.values.first.map! do |object|
+      api_response.values.first.map do |object|
         self.new(object)
       end
-      api_response
     end
 
     def self.create_dbc_object(api_response)
-      { api_response.keys.first => self.new(api_response.values.first) }
+      self.new(api_response.values.first)
     end
   end
 end
