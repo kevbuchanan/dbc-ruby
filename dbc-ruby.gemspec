@@ -19,6 +19,4 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'rest-client'
   gem.add_development_dependency 'rspec', '~> 2.7'
-
-  gem.require_paths = ['lib']
 end

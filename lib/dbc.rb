@@ -11,7 +11,7 @@ require 'json'
 require 'rest_client'
 
 module DBC
-  @api_url = 'http://localhost:3000/v1' #TODO: live site
+  @api_url = 'https://api.devbootcamp.com'
   @token = nil
   @shared_token = nil
 

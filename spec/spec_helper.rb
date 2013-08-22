@@ -1,24 +1,8 @@
-require 'database_cleaner'
+require 'rubygems'
+require 'bundler/setup'
+
+require 'dbc-ruby'
 
 RSpec.configure do |config|
-  config.include Gem::GemHelper
 
-  config.mock_with :rspec
-
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
-  end
-
-  config.before(:each, :js => true) do
-    DatabaseCleaner.strategy = :truncation
-  end
-
-  config.before(:each) do
-    DatabaseCleaner.start
-  end
-
-  config.after(:each) do
-    DatabaseCleaner.clean
-  end
 end
