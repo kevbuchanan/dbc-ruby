@@ -1,4 +1,4 @@
-require_relative 'dbc/dbc_object'
+  require_relative 'dbc/dbc_object'
 require_relative 'dbc/user'
 require_relative 'dbc/cohort'
 require_relative 'dbc/challenge'
@@ -11,7 +11,7 @@ require 'json'
 require 'rest_client'
 
 module DBC
-  @api_url = 'https://api.devbootcamp.com'
+  @api_url = 'https://api.devbootcamp.com/v1'
   @token = nil
   @shared_token = nil
 
