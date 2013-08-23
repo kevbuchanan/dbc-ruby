@@ -1,4 +1,4 @@
-  require_relative 'dbc/dbc_object'
+require_relative 'dbc/dbc_object'
 require_relative 'dbc/user'
 require_relative 'dbc/cohort'
 require_relative 'dbc/challenge'
