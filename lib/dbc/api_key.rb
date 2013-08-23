@@ -5,7 +5,7 @@ module DBC
 		end
 
     def self.find(id)
-      api_response = DBC.request(self.endpoint(id))
+      api_response = DBC.request_with_shared_token(self.endpoint(id))
       self.create_dbc_object(api_response)
     end
 	end
