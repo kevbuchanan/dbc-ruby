@@ -9,7 +9,7 @@ If you want to use the Dev Bootcamp (DBC) Ruby gem, run:
 ## Configuration
 
 You must have an api key to make api requests with this gem.
-You can see your api key by logging in at [dev.devbootcamp.com](http://dev.devbootcamp.com)
+You can see your api key by logging in at [developer.devbootcamp.com](http://developer.devbootcamp.com)
 
 Set your DBC_API environment variable to your api key, or use the gem to configure your key:
 ```ruby
