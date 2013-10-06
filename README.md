@@ -48,7 +48,7 @@ Class methods:
 ```ruby
 DBC::Cohort.all() # => all cohorts
 DBC::Cohort.all(page: 1, per_page: 10) # => first 10 cohorts
-DBC::Cohort.find(id) # => a specific cohort by user_id
+DBC::Cohort.find(id) # => a specific cohort by cohort_id
 ```
 
 ### Challenge
